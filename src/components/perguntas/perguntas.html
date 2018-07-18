@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Jogar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <div *ngIf="!notReady">
+        <br>
+        <h3>Certifique-se que está pronto, e clique no botão abaixo.</h3>
+
+        <div align="center" padding>
+          <button (click)="proximaPergunta()" ion-button icon-end color="secondary">
+            Começar
+            <ion-icon name="play"></ion-icon>
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="notReady">
+        <h3>{{ perguntaAtual.pergunta }}</h3>
+
+        <br>
+
+        <form [formGroup]="questao">
+          <ion-list radio-group formControlName="resposta">
+            <ion-item *ngFor="let alternativa of perguntaAtual.alternativas">
+              <ion-label>{{ alternativa.value }}) {{ alternativa.label }}</ion-label>
+              <ion-radio value="{{ alternativa.value }}"></ion-radio>
+            </ion-item>
+          </ion-list>
+
+          <div align="center">
+            <button [disabled]="!questao.valid" (click)="proximaPergunta()" type="button" icon-end ion-button>
+              Próxima
+              <ion-icon name="arrow-dropright-circle"></ion-icon>
+            </button>
+          </div>
+        </form>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>
