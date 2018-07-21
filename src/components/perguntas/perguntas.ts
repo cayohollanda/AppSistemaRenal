@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ErrorHandler } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from 'ionic-angular';
 
@@ -18,31 +18,33 @@ export class PerguntasComponent {
 
   numPergunta: number = 0;
 
+  perguntasAcertadas: number = 0;
+
   perguntas: any[] = [
     {
 
     },
     {
-      pergunta: 'Pergunta 1?',
+      pergunta: 'Qual destas não é uma função do rim?',
       alternativas: [
-        { value: 'A', label: 'Letra A' },
-        { value: 'B', label: 'Letra B' },
-        { value: 'C', label: 'Letra C' },
-        { value: 'D', label: 'Letra D' },
-        { value: 'E', label: 'Letra E' }
+        { value: 'A', label: 'Eliminação de proteínas' },
+        { value: 'B', label: 'Regulação do volume de água' },
+        { value: 'C', label: 'Regulação do balanço eletrolítico' },
+        { value: 'D', label: 'Conservação de nutrientes' },
+        // { value: 'E', label: 'Letra E' }
       ],
-      resposta: 'A'
+      resposta: 'A',
+      explicacao: 'Proteínas são macromoléculas que não são filtradas pelos néfrons devido ao seu tamanho.'
     },
     {
-      pergunta: 'Pergunta 2?',
+      pergunta: 'Indivíduos com maior número de néfrons de alça longa são capazes de:',
       alternativas: [
-        { value: 'A', label: 'Letra A' },
-        { value: 'B', label: 'Letra B' },
-        { value: 'C', label: 'Letra C' },
-        { value: 'D', label: 'Letra D' },
-        { value: 'E', label: 'Letra E' }
+        { value: 'A', label: 'Menor reabsorção de água' },
+        { value: 'B', label: 'Urina menos concentrada' },
+        { value: 'C', label: 'Aumentar a quantidade de urina produzida' },
+        { value: 'D', label: 'Maior reabsorção de água' },
       ],
-      resposta: 'B'
+      resposta: 'D'
     }
   ];
 
@@ -65,11 +67,12 @@ export class PerguntasComponent {
 
   }
 
-  proximaPergunta() {
+  proximaPergunta(resposta) {
 
-    if(this.questao.controls.resposta.value) {
-      if(this.questao.controls.resposta.value == this.perguntaAtual.resposta) {
-        console.log('Resposta correta!');
+    if(resposta) {
+      if(resposta == this.perguntaAtual.resposta) {
+        this.alertaResponsaValida();
+        this.perguntasAcertadas++;
       } else {
         this.alertaRespostaInvalida();
       }
@@ -86,6 +89,15 @@ export class PerguntasComponent {
     }
   }
 
+  alertaResponsaValida() {
+    const alert = this.alertCtrl.create();
+    alert.setTitle('Resposta correta!');
+    alert.setSubTitle('Sua resposta está correta. Parabéns!');
+    alert.addButton('Thanks! :))');
+
+    alert.present();
+  }
+
   alertaRespostaInvalida() {
     let label = '';
     for(let alternativa of this.perguntaAtual.alternativas) {
@@ -94,11 +106,11 @@ export class PerguntasComponent {
       }
     }
 
-    const alert = this.alertCtrl.create({
-      title: 'Resposta incorreta',
-      subTitle: 'A resposta correta é' + '\n' + this.perguntaAtual.resposta + ') ' + label,
-      buttons: ['OK']
-    });
+    const alert = this.alertCtrl.create();
+    alert.setTitle('Resposta incorreta!');
+    alert.setSubTitle('Resposta correta => ' + label);
+    alert.setMessage('Explicação => ' + this.perguntaAtual.explicacao);
+    alert.addButton('Okay :(');
 
     alert.present();
   }

@@ -8,6 +8,12 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-card *ngIf="notReady">
+    <ion-card-header align="center">
+      <strong> Acertos: {{perguntasAcertadas}} </strong>
+    </ion-card-header>
+  </ion-card>
+
   <ion-card>
     <ion-card-content>
       <div *ngIf="!notReady">
@@ -23,23 +29,28 @@
       </div>
 
       <div *ngIf="notReady">
-        <h3>{{ perguntaAtual.pergunta }}</h3>
+        <ion-card-header class="quebra-linha" style="padding-bottom: 0px">
+          {{ perguntaAtual.pergunta }}
+        </ion-card-header>
 
         <br>
 
         <form [formGroup]="questao">
           <ion-list radio-group formControlName="resposta">
             <ion-item *ngFor="let alternativa of perguntaAtual.alternativas">
-              <ion-label>{{ alternativa.value }}) {{ alternativa.label }}</ion-label>
-              <ion-radio value="{{ alternativa.value }}"></ion-radio>
+              <div ion-button (click)="proximaPergunta(alternativa.value)" class="alternativa-pergunta">
+                {{ alternativa.label }}
+              </div>
+              <!-- <ion-label (click)="proximaPergunta()">{{ alternativa.label }}</ion-label> -->
+              <!-- <ion-radio (click)="proximaPergunta()" value="{{ alternativa.value }}"></ion-radio> -->
             </ion-item>
           </ion-list>
 
           <div align="center">
-            <button [disabled]="!questao.valid" (click)="proximaPergunta()" type="button" icon-end ion-button>
+            <!-- <button [disabled]="!questao.valid" (click)="proximaPergunta()" type="button" icon-end ion-button>
               Próxima
               <ion-icon name="arrow-dropright-circle"></ion-icon>
-            </button>
+            </button> -->
           </div>
         </form>
       </div>
