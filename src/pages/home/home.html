@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -10,5 +10,15 @@
 <ion-content padding>
   <h4>Perguntados sobre Sistema Renal</h4>
 
-  <p></p>
+  <ion-list style="width: 100%">
+    <button (click)="jogar()" ion-item icon-start>
+      <ion-icon name="md-play" item-start></ion-icon>
+      Jogar
+    </button>
+
+    <button ion-item icon-start>
+      <ion-icon name="logo-usd" item-start></ion-icon>
+      Meus pontos
+    </button>
+  </ion-list>
 </ion-content>

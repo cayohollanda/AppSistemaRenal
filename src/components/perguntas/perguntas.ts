@@ -1,6 +1,6 @@
 import { Component, ErrorHandler } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController } from 'ionic-angular';
+import { AlertController, ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the PerguntasComponent component.
@@ -54,7 +54,8 @@ export class PerguntasComponent {
 
   constructor(
     private fb: FormBuilder,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public toastCtrl: ToastController
   ) { }
 
   ngOnInit() {
@@ -90,12 +91,18 @@ export class PerguntasComponent {
   }
 
   alertaResponsaValida() {
-    const alert = this.alertCtrl.create();
+    // Alerta antigo
+    /*const alert = this.alertCtrl.create();
     alert.setTitle('Resposta correta!');
     alert.setSubTitle('Sua resposta está correta. Parabéns!');
     alert.addButton('Thanks! :))');
 
-    alert.present();
+    alert.present();*/
+    const toast = this.toastCtrl.create({
+      message: 'Resposta correta!!',
+      duration: 2000
+    });
+    toast.present();
   }
 
   alertaRespostaInvalida() {
@@ -106,13 +113,21 @@ export class PerguntasComponent {
       }
     }
 
-    const alert = this.alertCtrl.create();
+    // Alerta antigo
+    /*const alert = this.alertCtrl.create();
     alert.setTitle('Resposta incorreta!');
     alert.setSubTitle('Resposta correta => ' + label);
     alert.setMessage('Explicação => ' + this.perguntaAtual.explicacao);
     alert.addButton('Okay :(');
 
-    alert.present();
+    alert.present();*/
+    const toast = this.toastCtrl.create({
+      message: 'Resposta Incorreta! A resposta correta é (' + label + '). ' + this.perguntaAtual.explicacao,
+      showCloseButton: true,
+      // duration: 4000,
+      closeButtonText: 'OK'
+    });
+    toast.present();
   }
 
 }
