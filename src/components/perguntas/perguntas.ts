@@ -91,18 +91,17 @@ export class PerguntasComponent {
   }
 
   alertaResponsaValida() {
-    // Alerta antigo
-    /*const alert = this.alertCtrl.create();
+    const alert = this.alertCtrl.create();
     alert.setTitle('Resposta correta!');
     alert.setSubTitle('Sua resposta está correta. Parabéns!');
     alert.addButton('Thanks! :))');
 
-    alert.present();*/
-    const toast = this.toastCtrl.create({
-      message: 'Resposta correta!!',
-      duration: 2000
-    });
-    toast.present();
+    alert.present();
+    // const toast = this.toastCtrl.create({
+    //   message: 'Resposta correta!!',
+    //   duration: 2000
+    // });
+    // toast.present();
   }
 
   alertaRespostaInvalida() {
@@ -113,21 +112,20 @@ export class PerguntasComponent {
       }
     }
 
-    // Alerta antigo
-    /*const alert = this.alertCtrl.create();
+    const alert = this.alertCtrl.create();
     alert.setTitle('Resposta incorreta!');
     alert.setSubTitle('Resposta correta => ' + label);
     alert.setMessage('Explicação => ' + this.perguntaAtual.explicacao);
     alert.addButton('Okay :(');
 
-    alert.present();*/
-    const toast = this.toastCtrl.create({
-      message: 'Resposta Incorreta! A resposta correta é (' + label + '). ' + this.perguntaAtual.explicacao,
-      showCloseButton: true,
-      // duration: 4000,
-      closeButtonText: 'OK'
-    });
-    toast.present();
+    alert.present();
+    // const toast = this.toastCtrl.create({
+    //   message: 'Resposta Incorreta! A resposta correta é (' + label + '). ' + this.perguntaAtual.explicacao,
+    //   showCloseButton: true,
+    //   // duration: 4000,
+    //   closeButtonText: 'OK'
+    // });
+    // toast.present();
   }
 
 }
