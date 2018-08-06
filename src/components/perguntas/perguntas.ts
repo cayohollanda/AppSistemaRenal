@@ -1,6 +1,7 @@
 import { Component, ErrorHandler } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController, ToastController } from 'ionic-angular';
+import { AlertController, ToastController, ModalController, NavController } from 'ionic-angular';
+import { HomePage } from '../../pages/home/home';
 
 /**
  * Generated class for the PerguntasComponent component.
@@ -188,7 +189,9 @@ export class PerguntasComponent {
   constructor(
     private fb: FormBuilder,
     public alertCtrl: AlertController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public modalCtrl: ModalController,
+    public navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -226,32 +229,54 @@ export class PerguntasComponent {
 
   tempoPergunta = 18;
   contadorTempoPergunta() {
-    console.log(this.tempoPergunta);
     if(this.tempoPergunta === 0) {
       this.alertaTempoExpirado();
-      this.proximaPergunta(null);
-      this.tempoPergunta = 18;
+      const record = Number(localStorage.getItem('record'));
+      const tentativas = Number(localStorage.getItem('tentativas'));
+
+      if(record < this.numPergunta || record == undefined) {
+        localStorage.setItem('record', this.perguntasAcertadas.toString());
+      }
+
+      let novoTentativas = tentativas + 1;
+      localStorage.setItem('tentativas', novoTentativas.toString());
+      this.navCtrl.setRoot(HomePage);
+      this.ngOnDestroy();
     } else {
       this.tempoPergunta--;
     }
   }
 
+  primeiraPergunta = false;
   comecar() {
     this.irParaProxima = true;
     this.iniciarContador = true;
+    this.botaoAcionado = true;
     this.gerenciaTempoPergunta();
     this.proximaPergunta(null);
   }
 
   irParaProxima = false;
+  botaoAcionado = false;
   proximaPergunta(resposta) {
-
+    this.botaoAcionado = false;
     if(resposta) {
       if(resposta == this.perguntaAtual.resposta) {
         this.alertaRespostaValida();
         this.perguntasAcertadas++;
       } else {
         this.alertaRespostaInvalida();
+        const record = Number(localStorage.getItem('record'));
+        const tentativas = Number(localStorage.getItem('tentativas'));
+
+        if(record < this.numPergunta || record == undefined) {
+          localStorage.setItem('record', this.perguntasAcertadas.toString());
+        }
+
+        let novoTentativas = tentativas + 1;
+        localStorage.setItem('tentativas', novoTentativas.toString());
+        this.navCtrl.setRoot(HomePage);
+        this.ngOnDestroy();
       }
     }
 
@@ -264,6 +289,28 @@ export class PerguntasComponent {
         this.numPergunta++;
         this.perguntaAtual = this.perguntas[this.numPergunta];
         this.questao.controls.resposta.reset();
+      } else {
+        const record = Number(localStorage.getItem('record'));
+        const tentativas = Number(localStorage.getItem('tentativas'));
+
+        if(record < this.numPergunta || record == undefined) {
+          localStorage.setItem('record', this.perguntasAcertadas.toString());
+        }
+
+        let novoTentativas = tentativas + 1;
+        localStorage.setItem('tentativas', novoTentativas.toString());
+
+        const alert = this.alertCtrl.create();
+        alert.setTitle('Você venceu!');
+        alert.setSubTitle('Parabéns, você conseguiu acertar todas as perguntas sem errar nenhuma! :\')');
+        alert.addButton({
+          text: 'Obrigado! :)',
+          handler: () => {
+            this.tempoPergunta = 18;
+          }
+        });
+
+        alert.present();
       }
     }
   }
@@ -271,19 +318,32 @@ export class PerguntasComponent {
   alertaTempoExpirado() {
     const alert = this.alertCtrl.create();
     alert.setTitle('Seu tempo acabou!');
-    alert.setSubTitle('Passaram-se os 18 segundos, vamos para a próxima?!');
-    alert.addButton('Vamos!');
+    alert.setSubTitle('Passaram-se os 18 segundos, você perdeu! :(');
+    alert.addButton({
+      text: 'Voltar ao início',
+      handler: () => {
+        this.tempoPergunta = 18;
+      }
+    });
 
     alert.present();
+
   }
 
   alertaRespostaValida() {
     const alert = this.alertCtrl.create();
     alert.setTitle('Resposta correta!');
     alert.setSubTitle('Sua resposta está correta. Parabéns!');
-    alert.addButton('Thanks! :))');
+    alert.addButton({
+      text: 'Thanks :)',
+      handler: () => {
+        this.tempoPergunta = 18;
+      }
+    });
 
     alert.present();
+
+    this.tempoPergunta = 999;
     // const toast = this.toastCtrl.create({
     //   message: 'Resposta correta!!',
     //   duration: 2000
@@ -303,7 +363,12 @@ export class PerguntasComponent {
     alert.setTitle('Resposta incorreta!');
     alert.setSubTitle('Resposta correta => ' + label);
     alert.setMessage('Explicação => ' + this.perguntaAtual.explicacao);
-    alert.addButton('Okay :(');
+    alert.addButton({
+      text: 'Voltar ao início :(',
+      handler: () => {
+        this.tempoPergunta = 18;
+      }
+    });
 
     return alert.present()
       .then(() => {

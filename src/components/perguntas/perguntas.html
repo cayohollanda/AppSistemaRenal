@@ -7,15 +7,13 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-card *ngIf="notReady">
-    <ion-card-header align="center">
-      <strong> Acertos: {{perguntasAcertadas}} </strong>
-    </ion-card-header>
-  </ion-card>
+<ion-content>
+  <div *ngIf="notReady" text-center style="margin-top: 5px">
+    <strong> Acertos: {{perguntasAcertadas}} </strong> | <strong> Tempo restante: {{tempoPergunta}}s </strong>
+  </div>
 
   <ion-card>
-    <ion-card-content>
+    <ion-card-content style="padding-top: 0px">
       <div *ngIf="!notReady">
         <br>
         <h3>Certifique-se que está pronto, e clique no botão abaixo.</h3>
@@ -29,7 +27,7 @@
       </div>
 
       <div *ngIf="notReady">
-        <ion-card-header class="quebra-linha" style="padding-bottom: 0px">
+        <ion-card-header text-uppercase class="pergunta quebra-linha" style="padding-bottom: 0px">
           {{ perguntaAtual.pergunta }}
         </ion-card-header>
 
@@ -56,6 +54,4 @@
       </div>
     </ion-card-content>
   </ion-card>
-  
-  <button color="danger" class="btn-back-aula" ion-button full>Ir para aula</button>
 </ion-content>

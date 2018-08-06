@@ -9,13 +9,15 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PerguntasComponent } from '../components/perguntas/perguntas';
+import { MeuPerfilComponent } from '../components/meu-perfil/meu-perfil';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    PerguntasComponent
+    PerguntasComponent,
+    MeuPerfilComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { PerguntasComponent } from '../components/perguntas/perguntas';
     MyApp,
     HomePage,
     ListPage,
-    PerguntasComponent
+    PerguntasComponent,
+    MeuPerfilComponent
   ],
   providers: [
     StatusBar,
