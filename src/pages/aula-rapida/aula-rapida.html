@@ -1,0 +1,100 @@
+<!--
+  Generated template for the AulaRapidaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Aula Rápida</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <h3 text-center><b>O RIM</b></h3>
+        <br>
+        <p>Os rins são órgãos responsáveis por promover a manutenção do equilíbrio do meio interno (homeostase) do organismo. Para isso, suas principais funções consistem em:</p>
+        <ul>
+          <li>Regulação do volume de água</li>
+          <li>Regulação do balanço eletrolítico</li>
+          <li>Manutenção do pH sanguíneo</li>
+          <li>Conservação de nutrientes e eliminação de metabólitos tóxicos</li>
+          <li>Participação na formação de eritrócitos</li>
+        </ul>
+
+        <p>Em sua estrutura, representada abaixo, o rim é dividido em duas regiões: cortical e medular:</p>
+
+        <img src="assets/imgs/oRim.png" alt="" srcset="">
+        <br>
+        <br>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12>
+        <h3 text-center><b>OS NÉFRONS</b></h3>
+        <br>
+        <p>Os néfrons são as unidades renais responsáveis pela filtração do sangue. Seu papel é formar o líquido ultrafiltrado a partir do plasma sanguíneo, selecionando quais substâncias e em que quantidade devem ser excretadas ao final do processo.</p>
+        <p>Cada indivíduo humano possui de 800 mil a 1 milhão e 200 mil néfrons, estes podendo ser divididos em néfrons corticais, localizados na zona externa do córtex; medicorticais, localizados na zona interna do córtex; e medulares, localizados  parcialmente na região interna cortical e parcialmente na medular.</p>
+        <p>As estruturas que compõem o néfron apresentam diferentes funções e ao longo do trajeto percorrido pelo ultrafiltrado são responsáveis por alterar sua composição. Os segmentos do néfron são, em ordem: glomérulo, túbulo proximal convoluto, alça de henle, túbulo distal convoluto e ducto coletor. Suas funções estão representadas na tabela:</p>
+        <img src="assets/imgs/osNefrons.png" alt="" srcset="">
+        <br>
+        <br>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12>
+        <h3 text-center><b>A MEMBRANA FILTRANTE</b></h3>
+        <p>Ao adentrar o glomérulo, em condições normais, um quinto do plasma sanguíneo é filtrado. Nesse processo, o plasma proveniente da arteríola aferente atravessa a membrana filtrante e em seguida adentra o interior da cápsula de bowman, onde continuará seu trajeto pelo túbulo proximal convoluto, enquanto o plasma que não fora filtrado seguirá pela arteríola eferente e capilares peritubulares.</p>
+        <p>A membrana filtrante tem como objetivo selecionar as substâncias que devem ser filtradas na primeira etapa da formação do líquido ultrafiltrado. Durante a passagem do plasma pela membrana filtrante, haverá estruturas com função de impedir que macromoléculas, como proteínas e células do sistema imunológico, por exemplo, sejam filtradas.</p>
+        <img src="assets/imgs/aMembranaFiltrante.png" alt="" srcset="">
+        <br>
+        <br>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12>
+        <h3 text-center><b>OS HORMÔNIOS REGULADORES</b></h3>
+        <p>Uma variedade de hormônios regulatórios atua no sistema renal com a finalidade de responder às condições e necessidades do organismo naquele momento, promovendo assim a homeostase. Entre alguns dos principais, temos:</p>
+        <ul>
+          <li>Renina: Liberada pelas células justaglomerulares, tem efeito vasoconstrictor, aumentando assim a pressão arterial.</li>
+          <li>Angiotensina II: A angiotensina II modela o fluxo sanguíneo renal e aumenta o ritmo de filtração glomerular através da vasoconstrição das arteríolas, com maior ênfase na eferente.</li>
+          <li>Aldosterona: A aldosterona estimula a reabsorção de sódio, água e cloro e a secreção de potássio e hidrogênio.</li>
+          <li>Conservação de nutrientes e eliminação de metabólitos tóxicos</li>
+          <li>Hormônio Antidiurético (ADH): Na ausência do ADH não ocorre reabsorção de água no ducto coletor. Já na presença do ADH, ocorre a reabsorção da água, sendo assim bastante importante para o organismo em situações de privação hídrica.</li>
+        </ul>
+
+        <br>
+        <br>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12>
+        <h3 text-center><b>FIM DA AULA RÁPIDA</b></h3>
+
+        <p>Com essa breve aula esperamos ter apresentado de forma geral e didática o conteúdo que será abordado durante o aplicativo. Entretanto, para fazer uma pontuação alta ou mesmo zerar o jogo, você terá um grande desafio pela frente! Dessa forma, nossa equipe recomenda fortemente a leitura do livro utilizado como base bibliográfica para a elaboração do aplicativo: <b>Fisiologia – 4ª Edição</b>, da autora <b>Margarida de Mello Aires</b>.</p>
+
+        <ion-row>
+          <ion-col col-6 text-left>
+            <button (click)="comecarJogo()" ion-button small outline>Começar o jogo!</button>
+          </ion-col>
+          <ion-col col-6 text-right>
+            <button (click)="lerLivro()" ion-button small outline>Ler o livro</button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

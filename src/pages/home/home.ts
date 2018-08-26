@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, Nav } from 'ionic-angular';
 import { PerguntasComponent } from '../../components/perguntas/perguntas';
 import { MeuPerfilComponent } from '../../components/meu-perfil/meu-perfil';
+import { AulaRapidaPage } from '../aula-rapida/aula-rapida';
 
 @Component({
   selector: 'page-home',
@@ -13,12 +14,12 @@ export class HomePage {
     public navCtrl: NavController,
   ) { }
 
-  jogar() {
+  comecarJogo() {
     this.navCtrl.setRoot(PerguntasComponent);
   }
 
-  meuPerfil() {
-    this.navCtrl.setRoot(MeuPerfilComponent);
+  aulaRapida() {
+    this.navCtrl.setRoot(AulaRapidaPage);
   }
 
 }

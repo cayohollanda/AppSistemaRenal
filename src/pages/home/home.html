@@ -8,22 +8,25 @@
 </ion-header>
 
 <ion-content padding>
-  <h4>Perguntados sobre Sistema Renal</h4>
-
   <ion-list style="width: 100%">
-    <button (click)="jogar()" ion-item icon-start>
-      <ion-icon name="md-play" item-start></ion-icon>
-      Jogar
-    </button>
+    <h6>Bem vindo ao Perguntados: Sistema Renal</h6>
+    <p>Antes de começar a jogar você pode acessar a Aula Rápida para relembrar ou aprender mais sobre o Sistema Renal e melhorar sua pontuação!</p>
 
-    <button (click)="meuPerfil()" ion-item icon-start>
-      <ion-icon name="logo-usd" item-start></ion-icon>
-      Meu perfil
-    </button>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 text-left>
+          <button (click)="comecarJogo()" ion-button small outline>Começar o jogo</button>
+        </ion-col>
+        <ion-col col-6 text-right>
+          <button (click)="aulaRapida()" ion-button small outline>Aula rápida</button>
+        </ion-col>
+      </ion-row>
 
-    <button ion-item icon-start>
-      <ion-icon name="book" item-start></ion-icon>
-      Ir para aula
-    </button>
+      <ion-row>
+        <ion-col col-12>
+          <p>A Aula Rápida pode ser acessada a qualquer momento através do menu do jogo.</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-list>
 </ion-content>

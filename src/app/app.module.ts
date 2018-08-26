@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PerguntasComponent } from '../components/perguntas/perguntas';
 import { MeuPerfilComponent } from '../components/meu-perfil/meu-perfil';
+import { AulaRapidaPage } from '../pages/aula-rapida/aula-rapida';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MeuPerfilComponent } from '../components/meu-perfil/meu-perfil';
     ListPage,
     PerguntasComponent,
     MeuPerfilComponent,
+    AulaRapidaPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { MeuPerfilComponent } from '../components/meu-perfil/meu-perfil';
     HomePage,
     ListPage,
     PerguntasComponent,
-    MeuPerfilComponent
+    MeuPerfilComponent,
+    AulaRapidaPage
   ],
   providers: [
     StatusBar,
