@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PerguntasComponent } from '../components/perguntas/perguntas';
 import { MeuPerfilComponent } from '../components/meu-perfil/meu-perfil';
 import { AulaRapidaPage } from '../pages/aula-rapida/aula-rapida';
+import { CreditosPage } from '../pages/creditos/creditos';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AulaRapidaPage } from '../pages/aula-rapida/aula-rapida';
     ListPage,
     PerguntasComponent,
     MeuPerfilComponent,
-    AulaRapidaPage
+    AulaRapidaPage,
+    CreditosPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { AulaRapidaPage } from '../pages/aula-rapida/aula-rapida';
     ListPage,
     PerguntasComponent,
     MeuPerfilComponent,
-    AulaRapidaPage
+    AulaRapidaPage,
+    CreditosPage
   ],
   providers: [
     StatusBar,
