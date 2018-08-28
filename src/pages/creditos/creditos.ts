@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 
 /**
  * Generated class for the CreditosPage page.
@@ -17,7 +17,10 @@ export class CreditosPage {
 
   easterEgg: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
+    this.platform.registerBackButtonAction(() => {
+      this.navCtrl.pop();
+    });
   }
 
   ionViewDidLoad() {

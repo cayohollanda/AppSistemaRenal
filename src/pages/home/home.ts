@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, Platform } from 'ionic-angular';
 import { PerguntasComponent } from '../../components/perguntas/perguntas';
 import { AulaRapidaPage } from '../aula-rapida/aula-rapida';
 
@@ -11,25 +11,27 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    public toastCtrl: ToastController
-  ) { }
+    public toastCtrl: ToastController,
+    public platform: Platform
+  ) {
+  }
 
   ionViewDidLoad() {
     this.credito();
   }
 
   comecarJogo() {
-    this.navCtrl.setRoot(PerguntasComponent);
+    this.navCtrl.push(PerguntasComponent);
   }
 
   aulaRapida() {
-    this.navCtrl.setRoot(AulaRapidaPage);
+    this.navCtrl.push(AulaRapidaPage);
   }
 
   credito() {
     const toast = this.toastCtrl.create({
       message: 'Desenvolvido por: Cayo Hollanda',
-      duration: 5000,
+      duration: 3000,
       position: 'bottom'
     });
 

@@ -1,3 +1,4 @@
+import { Platform, NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 /**
@@ -15,7 +16,11 @@ export class MeuPerfilComponent {
   record: string;
   tentativas: string;
 
-  constructor() { }
+  constructor(public platform: Platform, public navCtrl: NavController) {
+    this.platform.registerBackButtonAction(() => {
+      this.navCtrl.pop();
+    });
+  }
 
   ngOnInit() {
     this.record = localStorage.getItem('record');

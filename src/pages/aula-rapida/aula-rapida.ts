@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { PerguntasComponent } from '../../components/perguntas/perguntas';
 
 /**
@@ -16,14 +16,17 @@ import { PerguntasComponent } from '../../components/perguntas/perguntas';
 })
 export class AulaRapidaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
+    this.platform.registerBackButtonAction(() => {
+      this.navCtrl.pop();
+    });
   }
 
   ionViewDidLoad() {
   }
 
   comecarJogo() {
-    this.navCtrl.setRoot(PerguntasComponent)
+    this.navCtrl.push(PerguntasComponent)
   }
 
   lerLivro() {

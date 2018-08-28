@@ -27,12 +27,15 @@ export class MyApp {
     this.pages = [
       { title: 'Início', component: HomePage },
       { title: 'Jogar', component: PerguntasComponent },
+      { title: 'Aula rápida', component: AulaRapidaPage },
       { title: 'Meu perfil', component: MeuPerfilComponent },
-      { title: 'Ir para aula', component: AulaRapidaPage },
       { title: 'Créditos', component: CreditosPage },
       { title: 'Agradecimentos', component: AgradecimentosPage }
     ];
 
+    this.platform.registerBackButtonAction(() => {
+      this.platform.exitApp()
+    });
   }
 
   initializeApp() {
@@ -47,6 +50,6 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    this.nav.push(page.component);
   }
 }

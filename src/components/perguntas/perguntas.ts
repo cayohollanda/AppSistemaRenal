@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController, ToastController, ModalController, NavController } from 'ionic-angular';
+import { AlertController, ToastController, ModalController, NavController, Platform } from 'ionic-angular';
 import { HomePage } from '../../pages/home/home';
 
 /**
@@ -215,8 +215,13 @@ export class PerguntasComponent {
     public alertCtrl: AlertController,
     public toastCtrl: ToastController,
     public modalCtrl: ModalController,
-    public navCtrl: NavController
-  ) { }
+    public navCtrl: NavController,
+    public platform: Platform
+  ) {
+    this.platform.registerBackButtonAction(() => {
+      this.navCtrl.pop();
+    });
+  }
 
   ngOnInit() {
     this.questao = this.fb.group({
@@ -264,7 +269,7 @@ export class PerguntasComponent {
 
       let novoTentativas = tentativas + 1;
       localStorage.setItem('tentativas', novoTentativas.toString());
-      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.push(HomePage);
       this.ngOnDestroy();
     } else {
       this.tempoPergunta--;
@@ -299,7 +304,7 @@ export class PerguntasComponent {
 
         let novoTentativas = tentativas + 1;
         localStorage.setItem('tentativas', novoTentativas.toString());
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.pop();
         this.ngOnDestroy();
       }
     }
@@ -309,7 +314,7 @@ export class PerguntasComponent {
         this.notReady = true;
       }
 
-      if(!(this.numPergunta >= this.perguntas.length-1)) {
+        if(!(this.numPergunta >= this.perguntas.length-1)) {
         this.numPergunta++;
         this.perguntaAtual = this.perguntas[this.numPergunta];
         this.questao.controls.resposta.reset();
@@ -367,7 +372,7 @@ export class PerguntasComponent {
 
     alert.present();
 
-    this.tempoPergunta = 999;
+    this.tempoPergunta = 18;
     // const toast = this.toastCtrl.create({
     //   message: 'Resposta correta!!',
     //   duration: 2000
@@ -385,7 +390,7 @@ export class PerguntasComponent {
 
     const alert = this.alertCtrl.create();
     alert.setTitle('Resposta incorreta!');
-    alert.setSubTitle('Resposta correta => ' + label);
+    alert.setSubTitle('Resposta correta: ' + label);
     alert.setMessage('Explicação => ' + this.perguntaAtual.explicacao);
     alert.addButton({
       text: 'Voltar ao início :(',
