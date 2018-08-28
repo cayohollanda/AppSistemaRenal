@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home';
 import { PerguntasComponent } from '../components/perguntas/perguntas';
 import { MeuPerfilComponent } from '../components/meu-perfil/meu-perfil';
 import { CreditosPage } from '../pages/creditos/creditos';
+import { AulaRapidaPage } from '../pages/aula-rapida/aula-rapida';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +28,7 @@ export class MyApp {
       { title: 'Início', component: HomePage },
       { title: 'Jogar', component: PerguntasComponent },
       { title: 'Meu perfil', component: MeuPerfilComponent },
-      { title: 'Ir para aula', component: PerguntasComponent },
+      { title: 'Ir para aula', component: AulaRapidaPage },
       { title: 'Créditos', component: CreditosPage },
       { title: 'Agradecimentos', component: AgradecimentosPage }
     ];
