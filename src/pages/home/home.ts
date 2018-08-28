@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, Nav, AlertController, ToastController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, ToastController } from 'ionic-angular';
 import { PerguntasComponent } from '../../components/perguntas/perguntas';
-import { MeuPerfilComponent } from '../../components/meu-perfil/meu-perfil';
 import { AulaRapidaPage } from '../aula-rapida/aula-rapida';
 
 @Component({

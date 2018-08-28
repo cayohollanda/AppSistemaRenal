@@ -1,10 +1,10 @@
+import { AgradecimentosPage } from './../pages/agradecimentos/agradecimentos';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { PerguntasComponent } from '../components/perguntas/perguntas';
 import { MeuPerfilComponent } from '../components/meu-perfil/meu-perfil';
 import { CreditosPage } from '../pages/creditos/creditos';
@@ -28,7 +28,8 @@ export class MyApp {
       { title: 'Jogar', component: PerguntasComponent },
       { title: 'Meu perfil', component: MeuPerfilComponent },
       { title: 'Ir para aula', component: PerguntasComponent },
-      { title: 'Créditos', component: CreditosPage }
+      { title: 'Créditos', component: CreditosPage },
+      { title: 'Agradecimentos', component: AgradecimentosPage }
     ];
 
   }

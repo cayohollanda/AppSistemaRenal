@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the CreditosPage page.
+ * Generated class for the AgradecimentosPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,22 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-creditos',
-  templateUrl: 'creditos.html',
+  selector: 'page-agradecimentos',
+  templateUrl: 'agradecimentos.html',
 })
-export class CreditosPage {
-
-  easterEgg: number;
+export class AgradecimentosPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    this.easterEgg = 0;
-  }
-
-  counterEasterEgg() {
-    this.easterEgg++;
+    console.log('ionViewDidLoad AgradecimentosPage');
   }
 
 }

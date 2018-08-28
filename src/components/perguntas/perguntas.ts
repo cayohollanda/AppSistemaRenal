@@ -1,4 +1,4 @@
-import { Component, ErrorHandler } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, ToastController, ModalController, NavController } from 'ionic-angular';
 import { HomePage } from '../../pages/home/home';
@@ -177,8 +177,32 @@ export class PerguntasComponent {
       resposta: 'A',
       explicacao: 'O filtrado glomerular terá origem do plasma proveniente da arteríola aferente, que será filtrado através dos capilares glomerulares e que então ocupará o espaço de bowman.'
     },
+
+    {
+      pergunta: 'Quais estruturas se interpenetram para originar as fendas de filtração?',
+      alternativas: [
+        { value: 'A', label: 'Pedicelos' },
+        { value: 'B', label: 'Podócitos' },
+        { value: 'C', label: 'Sialoproteínas' },
+        { value: 'D', label: 'Glicoproteínas' },
+      ],
+      resposta: 'A',
+      explicacao: 'As fendas de filtração são formadas pelos pedicelos, que se apoiam sobre a membrana basal e são conectados pela membrana diafragmática.'
+    },
+
+    {
+      pergunta: 'Qual camada é a principal responsável pelas propriedades de permeabilidade do glomérulo?',
+      alternativas: [
+        { value: 'A', label: 'Membrana basal' },
+        { value: 'B', label: 'Membrana diafragmática' },
+        { value: 'C', label: 'Endotélio do capilar' },
+        { value: 'D', label: 'Fenda de filtração' },
+      ],
+      resposta: 'A',
+      explicacao: 'Por ser a única camada contínua, é considerada a camada que determina as propriedades de permeabilidade. Possui poros muito pequenos que limitam o tamanho das moléculas que serão filtradas.'
+    },
   ];
-  // Pergunta 15
+  // Pergunta 17
 
   perguntaAtual: any;
 
@@ -214,14 +238,14 @@ export class PerguntasComponent {
   }
 
   shufflePerguntas() {
-    this.perguntas.sort(function (a, b){ 
+    this.perguntas.sort(function (a, b){
       return Math.floor(Math.random() * 10);
     });
   }
 
   shuffleRespostas() {
     for(let pergunta of this.perguntas) {
-      pergunta.alternativas.sort(function (a, b){ 
+      pergunta.alternativas.sort(function (a, b){
         return Math.floor(Math.random() * 10);
       });
     }
@@ -284,7 +308,7 @@ export class PerguntasComponent {
       if(!this.notReady) {
         this.notReady = true;
       }
-  
+
       if(!(this.numPergunta >= this.perguntas.length-1)) {
         this.numPergunta++;
         this.perguntaAtual = this.perguntas[this.numPergunta];
@@ -354,7 +378,7 @@ export class PerguntasComponent {
   alertaRespostaInvalida() {
     let label = '';
     for(let alternativa of this.perguntaAtual.alternativas) {
-      if(alternativa.value == this.perguntaAtual.resposta) { 
+      if(alternativa.value == this.perguntaAtual.resposta) {
         label = alternativa.label;
       }
     }

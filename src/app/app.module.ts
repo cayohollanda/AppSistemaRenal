@@ -1,3 +1,4 @@
+import { AgradecimentosPage } from './../pages/agradecimentos/agradecimentos';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -21,7 +22,8 @@ import { CreditosPage } from '../pages/creditos/creditos';
     PerguntasComponent,
     MeuPerfilComponent,
     AulaRapidaPage,
-    CreditosPage
+    CreditosPage,
+    AgradecimentosPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { CreditosPage } from '../pages/creditos/creditos';
     PerguntasComponent,
     MeuPerfilComponent,
     AulaRapidaPage,
-    CreditosPage
+    CreditosPage,
+    AgradecimentosPage
   ],
   providers: [
     StatusBar,

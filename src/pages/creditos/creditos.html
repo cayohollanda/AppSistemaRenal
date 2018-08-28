@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -31,12 +31,18 @@
           <li>Vanessa</li>
         </ul>
 
-        <p><b>Desenvolvimento:</b></p>
+        <p (click)="counterEasterEgg()"><b>Desenvolvimento:</b></p>
         <ul>
           <li>
             <a class="link-dev" href="https://github.com/cayohollanda">Cayo Hollanda</a>
           </li>
         </ul>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="easterEgg >= 5">
+      <ion-col col-12>
+        <iframe width="330" height="315" src="https://www.youtube.com/embed/XQRoVLQFwu0?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay" allowfullscreen></iframe>
       </ion-col>
     </ion-row>
   </ion-grid>
