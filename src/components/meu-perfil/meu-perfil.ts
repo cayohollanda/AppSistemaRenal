@@ -15,16 +15,22 @@ export class MeuPerfilComponent {
 
   record: string;
   tentativas: string;
+  tentativasParaZerar: string;
 
   constructor(public platform: Platform, public navCtrl: NavController) {
     this.platform.registerBackButtonAction(() => {
-      this.navCtrl.pop();
+      if (this.navCtrl.canGoBack()) { // CHECK IF THE USER IS IN THE ROOT PAGE.
+        this.navCtrl.pop(); // IF IT'S NOT THE ROOT, POP A PAGE.
+      } else {
+        this.platform.exitApp(); // IF IT'S THE ROOT, EXIT THE APP.
+      }
     });
   }
 
   ngOnInit() {
     this.record = localStorage.getItem('record');
     this.tentativas = localStorage.getItem('tentativas');
+    this.tentativasParaZerar = localStorage.getItem('tentativasParaZerar');
 
     if(this.record == null) {
       this.record = 'Nenhum record ainda';
@@ -34,8 +40,11 @@ export class MeuPerfilComponent {
       this.tentativas = 'Nenhuma tentativa ainda';
     }
 
-    console.log(this.record);
-    console.log(this.tentativas);
+    if(this.tentativasParaZerar == null) {
+      this.tentativasParaZerar = 'Você ainda não zerou o jogo!'
+    } else {
+      this.tentativasParaZerar += ' tentativas';
+    }
   }
 
 }

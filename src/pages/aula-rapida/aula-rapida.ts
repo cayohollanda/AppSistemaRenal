@@ -18,7 +18,11 @@ export class AulaRapidaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
     this.platform.registerBackButtonAction(() => {
-      this.navCtrl.pop();
+      if (this.navCtrl.canGoBack()) { // CHECK IF THE USER IS IN THE ROOT PAGE.
+        this.navCtrl.pop(); // IF IT'S NOT THE ROOT, POP A PAGE.
+      } else {
+        this.platform.exitApp(); // IF IT'S THE ROOT, EXIT THE APP.
+      }
     });
   }
 

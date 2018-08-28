@@ -14,6 +14,13 @@ export class HomePage {
     public toastCtrl: ToastController,
     public platform: Platform
   ) {
+    this.platform.registerBackButtonAction(() => {
+      if (this.navCtrl.canGoBack()) { // CHECK IF THE USER IS IN THE ROOT PAGE.
+        this.navCtrl.pop(); // IF IT'S NOT THE ROOT, POP A PAGE.
+      } else {
+        this.platform.exitApp(); // IF IT'S THE ROOT, EXIT THE APP.
+      }
+    })
   }
 
   ionViewDidLoad() {

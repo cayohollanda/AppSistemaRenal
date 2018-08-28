@@ -17,7 +17,7 @@ export class PerguntasComponent {
 
   questao: FormGroup;
 
-  numPergunta: number = 0;
+  numPergunta: number = -1;
 
   perguntasAcertadas: number = 0;
 
@@ -219,7 +219,11 @@ export class PerguntasComponent {
     public platform: Platform
   ) {
     this.platform.registerBackButtonAction(() => {
-      this.navCtrl.pop();
+      if (this.navCtrl.canGoBack()) { // CHECK IF THE USER IS IN THE ROOT PAGE.
+        this.navCtrl.pop(); // IF IT'S NOT THE ROOT, POP A PAGE.
+      } else {
+        this.platform.exitApp(); // IF IT'S THE ROOT, EXIT THE APP.
+      }
     });
   }
 
@@ -234,7 +238,7 @@ export class PerguntasComponent {
 
   id: number;
   gerenciaTempoPergunta() {
-    if(this.iniciarContador) {
+    if (this.iniciarContador) {
       this.tempoPergunta = 18;
       this.id = setInterval(() => {
         this.contadorTempoPergunta();
@@ -243,14 +247,14 @@ export class PerguntasComponent {
   }
 
   shufflePerguntas() {
-    this.perguntas.sort(function (a, b){
+    this.perguntas.sort(function (a, b) {
       return Math.floor(Math.random() * 10);
     });
   }
 
   shuffleRespostas() {
-    for(let pergunta of this.perguntas) {
-      pergunta.alternativas.sort(function (a, b){
+    for (let pergunta of this.perguntas) {
+      pergunta.alternativas.sort(function (a, b) {
         return Math.floor(Math.random() * 10);
       });
     }
@@ -258,12 +262,12 @@ export class PerguntasComponent {
 
   tempoPergunta = 18;
   contadorTempoPergunta() {
-    if(this.tempoPergunta === 0) {
+    if (this.tempoPergunta === 0) {
       this.alertaTempoExpirado();
       const record = Number(localStorage.getItem('record'));
       const tentativas = Number(localStorage.getItem('tentativas'));
 
-      if(record < this.numPergunta || record == undefined) {
+      if (record < this.numPergunta || record == undefined) {
         localStorage.setItem('record', this.perguntasAcertadas.toString());
       }
 
@@ -277,6 +281,7 @@ export class PerguntasComponent {
   }
 
   primeiraPergunta = false;
+  errouPergunta = false;
   comecar() {
     this.irParaProxima = true;
     this.iniciarContador = true;
@@ -289,59 +294,71 @@ export class PerguntasComponent {
   botaoAcionado = false;
   proximaPergunta(resposta) {
     this.botaoAcionado = false;
-    if(resposta) {
-      if(resposta == this.perguntaAtual.resposta) {
-        this.alertaRespostaValida();
+    if (resposta) {
+      if (resposta == this.perguntaAtual.resposta) {
+        if (this.numPergunta !== this.perguntas.length - 1) {
+          this.alertaRespostaValida();
+        }
         this.perguntasAcertadas++;
       } else {
         this.alertaRespostaInvalida();
+        this.errouPergunta = true;
         const record = Number(localStorage.getItem('record'));
         const tentativas = Number(localStorage.getItem('tentativas'));
 
-        if(record < this.numPergunta || record == undefined) {
+        if (record < this.numPergunta || record == undefined) {
           localStorage.setItem('record', this.perguntasAcertadas.toString());
         }
 
         let novoTentativas = tentativas + 1;
         localStorage.setItem('tentativas', novoTentativas.toString());
         this.navCtrl.pop();
-        this.ngOnDestroy();
+        this.navCtrl.setRoot(HomePage)
       }
     }
 
-    if(this.irParaProxima) {
-      if(!this.notReady) {
+    if (this.irParaProxima) {
+      if (!this.notReady) {
         this.notReady = true;
       }
 
-        if(!(this.numPergunta >= this.perguntas.length-1)) {
+      if (!(this.numPergunta >= this.perguntas.length - 1)) {
         this.numPergunta++;
         this.perguntaAtual = this.perguntas[this.numPergunta];
         this.questao.controls.resposta.reset();
       } else {
-        const record = Number(localStorage.getItem('record'));
-        const tentativas = Number(localStorage.getItem('tentativas'));
+        if (!this.errouPergunta) {
+          const record = localStorage.getItem('record');
+          const tentativas = Number(localStorage.getItem('tentativas'));
+          const tentativasParaZerar = localStorage.getItem('tentativasParaZerar');
 
-        if(record < this.numPergunta || record == undefined) {
-          localStorage.setItem('record', this.perguntasAcertadas.toString());
-        }
-
-        let novoTentativas = tentativas + 1;
-        localStorage.setItem('tentativas', novoTentativas.toString());
-
-        const alert = this.alertCtrl.create();
-        alert.setTitle('Você venceu!');
-        alert.setSubTitle('Parabéns, você conseguiu acertar todas as perguntas sem errar nenhuma! :\')');
-        alert.addButton({
-          text: 'Obrigado! :)',
-          handler: () => {
-            this.tempoPergunta = 18;
+          if (Number(record) < this.perguntasAcertadas || record == null) {
+            const novoRecord = this.perguntasAcertadas;
+            localStorage.setItem('record', novoRecord.toString());
           }
-        });
 
-        alert.present();
+          let novoTentativas = tentativas + 1;
+          localStorage.setItem('tentativas', novoTentativas.toString());
+
+          if (novoTentativas < Number(tentativasParaZerar) || tentativasParaZerar == null || tentativasParaZerar === '0') {
+            localStorage.setItem('tentativasParaZerar', novoTentativas.toString());
+          }
+
+          const alert = this.alertCtrl.create();
+          alert.setTitle('Você venceu!');
+          alert.setSubTitle('Parabéns, você conseguiu acertar todas as perguntas sem errar nenhuma! :\')');
+          alert.addButton({
+            text: 'Obrigado! :)',
+            handler: () => {
+              this.navCtrl.pop();
+            }
+          });
+
+          alert.present();
+        }
       }
     }
+    this.errouPergunta = false;
   }
 
   alertaTempoExpirado() {
@@ -382,8 +399,8 @@ export class PerguntasComponent {
 
   alertaRespostaInvalida() {
     let label = '';
-    for(let alternativa of this.perguntaAtual.alternativas) {
-      if(alternativa.value == this.perguntaAtual.resposta) {
+    for (let alternativa of this.perguntaAtual.alternativas) {
+      if (alternativa.value == this.perguntaAtual.resposta) {
         label = alternativa.label;
       }
     }
@@ -413,7 +430,7 @@ export class PerguntasComponent {
   }
 
   ngOnDestroy() {
-    if(this.id) {
+    if (this.id) {
       clearInterval(this.id);
     }
   }

@@ -22,7 +22,7 @@
       <ion-col col-12>
         <h3 text-center><b>Créditos</b></h3>
 
-        <p><b>Equipe:</b></p>
+        <p (click)="counterAdmin()"><b>Equipe:</b></p>
         <ul>
           <li>Rafael Godoy</li>
           <li>Matheus Soares</li>
@@ -42,6 +42,15 @@
     <ion-row *ngIf="easterEgg >= 5">
       <ion-col col-12>
         <iframe width="330" height="315" src="https://www.youtube.com/embed/XQRoVLQFwu0?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="admin >= 5">
+      <ion-col col-12>
+        <form #f="ngForm">
+          <input type="password" name="acao" #acao="ngModel" [(ngModel)]="passAdmin">
+          <button type="button" (click)="acaoAdmin()">Enviar</button>
+        </form>
       </ion-col>
     </ion-row>
   </ion-grid>
