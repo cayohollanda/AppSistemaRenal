@@ -228,6 +228,9 @@ export class PerguntasComponent {
   }
 
   ngOnInit() {
+  }
+
+  ionViewDidLoad() {
     this.questao = this.fb.group({
       resposta: ['', Validators.required]
     });
@@ -247,16 +250,38 @@ export class PerguntasComponent {
   }
 
   shufflePerguntas() {
-    this.perguntas.sort(function (a, b) {
-      return Math.floor(Math.random() * 10);
-    });
+    var currentIndex = this.perguntas.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = this.perguntas[currentIndex];
+      this.perguntas[currentIndex] = this.perguntas[randomIndex];
+      this.perguntas[randomIndex] = temporaryValue;
+    }
   }
 
   shuffleRespostas() {
     for (let pergunta of this.perguntas) {
-      pergunta.alternativas.sort(function (a, b) {
-        return Math.floor(Math.random() * 10);
-      });
+      var currentIndex = pergunta.alternativas.length, temporaryValue, randomIndex;
+
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = pergunta.alternativas[currentIndex];
+        pergunta.alternativas[currentIndex] = pergunta.alternativas[randomIndex];
+        pergunta.alternativas[randomIndex] = temporaryValue;
+      }
     }
   }
 
