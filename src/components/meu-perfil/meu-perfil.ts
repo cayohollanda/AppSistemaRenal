@@ -1,4 +1,4 @@
-import { Platform, NavController } from 'ionic-angular';
+import { Platform, NavController, AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 /**
@@ -17,7 +17,7 @@ export class MeuPerfilComponent {
   tentativas: string;
   tentativasParaZerar: string;
 
-  constructor(public platform: Platform, public navCtrl: NavController) {
+  constructor(public platform: Platform, public navCtrl: NavController, public alertCtrl: AlertController) {
     this.platform.registerBackButtonAction(() => {
       if (this.navCtrl.canGoBack()) { // CHECK IF THE USER IS IN THE ROOT PAGE.
         this.navCtrl.pop(); // IF IT'S NOT THE ROOT, POP A PAGE.
@@ -45,6 +45,45 @@ export class MeuPerfilComponent {
     } else {
       this.tentativasParaZerar += ' tentativas';
     }
+  }
+
+  zerarPontuacao() {
+    const alert = this.alertCtrl.create({
+      title: 'Tem certeza que deseja zerar a sua pontuação?',
+      message: 'Seus dados não poderão ser recuperados após isso!',
+      buttons: [
+        {
+          text: 'Sim',
+          handler: () => {
+            localStorage.removeItem('record');
+            localStorage.removeItem('tentativas');
+            localStorage.removeItem('tentativasParaZerar');
+            this.alertPontuacaoZeradaComSucesso();
+          }
+        },
+        {
+          text: 'Não',
+          handler: () => {
+
+          }
+        }
+      ]
+    });
+
+    alert.present();
+  }
+
+  alertPontuacaoZeradaComSucesso() {
+    const alert = this.alertCtrl.create({
+      title: 'Pontuação zerada com sucesso!',
+      buttons: [
+        {
+          text: 'Ok! :)'
+        }
+      ]
+    });
+
+    alert.present();
   }
 
 }

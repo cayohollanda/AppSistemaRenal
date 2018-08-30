@@ -9,7 +9,7 @@
 
 <ion-content>
   <div *ngIf="notReady" text-center style="margin-top: 5px">
-    <strong> Acertos: {{perguntasAcertadas}} </strong> | <strong> Tempo restante: {{tempoPergunta}}s </strong>
+    <strong> Acertos: {{perguntasAcertadas}} </strong> | <strong> Tempo restante: <span *ngIf="showTime">{{tempoPergunta}}s</span> </strong>
   </div>
 
   <ion-card>

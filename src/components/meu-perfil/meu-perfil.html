@@ -8,14 +8,28 @@
   </ion-header>
 
   <ion-content>
-    <ion-card>
-      <ion-card-header>Meu Perfil</ion-card-header>
 
-      <ion-card-content>
-        <p>Meu record de acertos: <strong>{{ record }}</strong></p>
-        <p>Minhas tentativas: <strong>{{ tentativas }}</strong></p>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12>
+          <ion-card>
+            <ion-card-header>Meu Perfil</ion-card-header>
 
-        <p>Você zerou o jogo em: <strong>{{ tentativasParaZerar }}</strong></p>
-      </ion-card-content>
-    </ion-card>
+            <ion-card-content>
+              <p>Meu record de acertos: <strong>{{ record }}</strong></p>
+              <p>Minhas tentativas: <strong>{{ tentativas }}</strong></p>
+
+              <p>Você zerou o jogo em: <strong>{{ tentativasParaZerar }}</strong></p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row text-center>
+        <ion-col col-12>
+          <button ion-button color="primary" (click)="zerarPontuacao()">Resetar pontuação</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
   </ion-content>

@@ -21,6 +21,8 @@ export class PerguntasComponent {
 
   perguntasAcertadas: number = 0;
 
+  showTime = true;
+
   perguntas: any[] = [
     {
       pergunta: 'Qual destas não é uma função do rim?',
@@ -250,6 +252,8 @@ export class PerguntasComponent {
   }
 
   shufflePerguntas() {
+    // Peguei de: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+
     var currentIndex = this.perguntas.length, temporaryValue, randomIndex;
 
     // While there remain elements to shuffle...
@@ -267,6 +271,8 @@ export class PerguntasComponent {
   }
 
   shuffleRespostas() {
+    // Peguei de: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+
     for (let pergunta of this.perguntas) {
       var currentIndex = pergunta.alternativas.length, temporaryValue, randomIndex;
 
@@ -326,7 +332,6 @@ export class PerguntasComponent {
         }
         this.perguntasAcertadas++;
       } else {
-        this.alertaRespostaInvalida();
         this.errouPergunta = true;
         const record = Number(localStorage.getItem('record'));
         const tentativas = Number(localStorage.getItem('tentativas'));
@@ -337,8 +342,7 @@ export class PerguntasComponent {
 
         let novoTentativas = tentativas + 1;
         localStorage.setItem('tentativas', novoTentativas.toString());
-        this.navCtrl.pop();
-        this.navCtrl.setRoot(HomePage)
+        this.alertaRespostaInvalida();
       }
     }
 
@@ -408,7 +412,7 @@ export class PerguntasComponent {
     alert.addButton({
       text: 'Thanks :)',
       handler: () => {
-        this.tempoPergunta = 18;
+        // this.tempoPergunta = 18;
       }
     });
 
@@ -430,14 +434,18 @@ export class PerguntasComponent {
       }
     }
 
+    this.showTime = false;
+    this.tempoPergunta = 9999;
     const alert = this.alertCtrl.create();
     alert.setTitle('Resposta incorreta!');
     alert.setSubTitle('Resposta correta: ' + label);
-    alert.setMessage('Explicação => ' + this.perguntaAtual.explicacao);
+    alert.setMessage('Explicação: ' + this.perguntaAtual.explicacao);
     alert.addButton({
       text: 'Voltar ao início :(',
       handler: () => {
-        this.tempoPergunta = 18;
+        this.navCtrl.pop();
+        this.navCtrl.setRoot(HomePage)
+        this.ngOnDestroy();
       }
     });
 

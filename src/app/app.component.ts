@@ -10,6 +10,8 @@ import { MeuPerfilComponent } from '../components/meu-perfil/meu-perfil';
 import { CreditosPage } from '../pages/creditos/creditos';
 import { AulaRapidaPage } from '../pages/aula-rapida/aula-rapida';
 
+import { timer } from 'rxjs/observable/timer';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -19,6 +21,8 @@ export class MyApp {
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
+
+  showSplash = true;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
@@ -48,6 +52,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      timer(3000).subscribe(() => this.showSplash = false)
     });
   }
 
