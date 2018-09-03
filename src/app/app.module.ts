@@ -1,7 +1,8 @@
+import { HTTP } from '@ionic-native/http';
 import { AgradecimentosPage } from './../pages/agradecimentos/agradecimentos';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, NavController } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -44,6 +45,7 @@ import { CreditosPage } from '../pages/creditos/creditos';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HTTP
   ]
 })
 export class AppModule {}

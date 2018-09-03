@@ -24,7 +24,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.credito();
+    // this.credito();
   }
 
   comecarJogo() {

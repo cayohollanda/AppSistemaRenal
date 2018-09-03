@@ -203,8 +203,236 @@ export class PerguntasComponent {
       resposta: 'A',
       explicacao: 'Por ser a única camada contínua, é considerada a camada que determina as propriedades de permeabilidade. Possui poros muito pequenos que limitam o tamanho das moléculas que serão filtradas.'
     },
+
+    {
+      pergunta: 'Qual porção do néfron fica em contato com o glomérulo formando o aparelho justaglomerular?',
+      alternativas: [
+        { value: 'A', label: 'Túbulo distal convoluto' },
+        { value: 'B', label: 'Túbulo distal reto' },
+        { value: 'C', label: 'Túbulo proximal convoluto' },
+        { value: 'D', label: 'Túbulo proximal reto' },
+      ],
+      resposta: 'A',
+      explicacao: 'O túbulo distal convoluto nessa região possui as chamadas células da mácula densa, que ficam em contato com as células justaglomerulares.'
+    },
+
+    {
+      pergunta: 'O papel da angiotensina II nos rins está relacionado com:',
+      alternativas: [
+        { value: 'A', label: 'Regulação do fluxo sanguíneo renal e do ritmo de filtração glomerular' },
+        { value: 'B', label: 'Vasodilatação das arteríolas aferente e eferente' },
+        { value: 'C', label: 'Vasoconstrição das arteríolas, tendo seu maior efeito na aferente' },
+        { value: 'D', label: 'Regulação do fluxo sanguíneo renal sem efeito sobre o RFG' },
+      ],
+      resposta: 'A',
+      explicacao: 'Em condições normais, a angiotensina modela o fluxo sanguíneo renal e aumenta o ritmo de filtração glomerular através da vasoconstrição das arteríolas, com maior ênfase na eferente.'
+    },
+
+    {
+      pergunta: 'As resistências das arteríolas aferente e eferente são um importante fator de filtração por regularem:',
+      alternativas: [
+        { value: 'A', label: 'Todas as alternativas estão corretas' },
+        { value: 'B', label: 'A pressão hidrostática nos capilares glomerulares' },
+        { value: 'C', label: 'O ritmo de filtração glomerular' },
+        { value: 'D', label: 'O fluxo sanguíneo renal' },
+      ],
+      resposta: 'A',
+      explicacao: 'A resistência das arteríolas provém da presença de musculatura lisa ao seu redor que permite a alteração do diâmetro do vaso que, por sua vez, tem como consequência todos os processos citados.'
+    },
+
+    {
+      pergunta: 'Quais são as membranas que revestem o túbulo proximal?',
+      alternativas: [
+        { value: 'A', label: 'Membrana apical e membrana peritubular' },
+        { value: 'B', label: 'Membrana luminal e membrana apical' },
+        { value: 'C', label: 'Membrana basolateral e membrana peritubular' },
+        { value: 'D', label: 'Membrana peritubular e membrana basal' },
+      ],
+      resposta: 'A',
+      explicacao: 'O túbulo proximal é revestido por células epiteliais que formam duas membranas: a membrana apical ou luminal e a membrana peritubular ou basolateral.'
+    },
+
+    {
+      pergunta: 'As células epiteliais que revestem o túbulo proximal não têm como característica:',
+      alternativas: [
+        { value: 'A', label: 'Regiões denominadas tight junctions, que não permitem a passagem de íons entre as células' },
+        { value: 'B', label: 'A presença de muitas mitocôndrias, para fornecer ATP aos canais de transporte ativo secundário' },
+        { value: 'C', label: 'O núcleo arredondado e a presença de mitocôndrias em disposição paliçádica' },
+        { value: 'D', label: 'Membrana possui a chamada borda-escova, para aumentar a área de superfície da célula' },
+      ],
+      resposta: 'A',
+      explicacao: 'As tight junctions do túbulo proximal são permeáveis e permitem a passagem de solutos a favor do seu gradiente de concentração.'
+    },
+
+    {
+      pergunta: 'O que não podemos afirmar a respeito dos segmentos do túbulo proximal?',
+      alternativas: [
+        { value: 'A', label: 'O segmento S2 possui a maior quantidade de dobras na membrana basolateral' },
+        { value: 'B', label: 'Em condições normais, o segmento S1 absorve 100% da glicose e dos aminoácidos filtrados.' },
+        { value: 'C', label: 'O segmento S3 refere-se somente à região reta do túbulo proximal' },
+        { value: 'D', label: 'Todos os segmentos possuem células que apresentam borda-escova' },
+      ],
+      resposta: 'A',
+      explicacao: 'A reabsorção ocorre com maior intensidade no segmento S1, uma vez que é esse segmento que possui maior quantidade de dobras na membrana basolateral, além de uma borda-escova maior em relação aos demais segmentos.'
+    },
+
+    {
+      pergunta: 'O túbulo proximal é responsável pela reabsorção de que quantidade de fluido tubular?',
+      alternativas: [
+        { value: 'A', label: 'Aproximadamente 90%' },
+        { value: 'B', label: '75%' },
+        { value: 'C', label: '95%' },
+        { value: 'D', label: '0%' },
+      ],
+      resposta: 'A',
+      explicacao: 'Mais precisamente falando, a quantidade reabsorvida é de 88%. Isso é resultado dos inúmeros mecanismos presentes no túbulo proximal que permitem a reabsorção de grande parte do plasma filtrado.'
+    },
+
+    {
+      pergunta: 'Sobre a alça de henle:',
+      alternativas: [
+        { value: 'A', label: 'Os néfrons corticais têm alças relativamente curtas' },
+        { value: 'B', label: 'Todas as alternativas estão corretas' },
+        { value: 'C', label: 'Os néfrons corticais não necessariamente possuem o ramo ascendente grosso' },
+        { value: 'D', label: 'A porção cortical nos néfrons justaglomerulares inicia-se medula externa e vai até a mácula densa' },
+      ],
+      resposta: 'A',
+      explicacao: 'Alguns néfrons corticais não possuem os ramos finos, porém necessariamente possuem o ramo grosso ascendente. Já a porção cortical nos néfrons justaglomerulares inicia-se na junção corticomedular.'
+    },
+
+    {
+      pergunta: 'Qual característica não corresponde aos ramos ascendentes?',
+      alternativas: [
+        { value: 'A', label: 'Nenhuma das alternativas' },
+        { value: 'B', label: 'Elevada reabsorção de magnésio' },
+        { value: 'C', label: 'Baixa permeabilidade à água' },
+        { value: 'D', label: 'Elevada reabsorção de sais, que por consequência tornará o fluido tubular mais concentrado' },
+      ],
+      resposta: 'A',
+      explicacao: 'Todas essas características estão relacionadas aos ramos ascendentes.'
+    },
+
+    {
+      pergunta: 'A absorção de água nos ramos finos descendentes ocorre principalmente:',
+      alternativas: [
+        { value: 'A', label: 'Pela existência de um gradiente osmótico entre o fluido tubular e o interstício' },
+        { value: 'B', label: 'Pelo transporte ativo secundário de H2O através das aquoporinas' },
+        { value: 'C', label: 'Devido à hipertonicidade do fluido tubular ' },
+        { value: 'D', label: 'Pelo transporte passivo de água e de solutos do interior tubular para o interstício' },
+      ],
+      resposta: 'A',
+      explicacao: 'O ramo fino descendente do néfron está envolto por um interstício hipertônico, que permite a passagem passiva da água.'
+    },
+
+    {
+      pergunta: 'Sobre as células do túbulo distal convoluto é incorreto afirmar:',
+      alternativas: [
+        { value: 'A', label: 'Apresentam muitos microvilos na região apical' },
+        { value: 'B', label: 'Possuem formato cúbico' },
+        { value: 'C', label: 'Suas regiões basolaterais formam vias paracelulares' },
+        { value: 'D', label: 'Citoplasma rico em mitocôndrias' },
+      ],
+      resposta: 'A',
+      explicacao: 'Ao contrário do túbulo proximal, o túbulo distal convoluto possui um número bastante reduzido de microvilos na região apical, embora estes ainda estejam presentes.'
+    },
+
+    {
+      pergunta: 'Qual dessas substâncias não é reabsorvida pelo túbulo distal convoluto?',
+      alternativas: [
+        { value: 'A', label: 'Magnésio' },
+        { value: 'B', label: 'Cálcio' },
+        { value: 'C', label: 'Bicabornato' },
+        { value: 'D', label: 'NaCl' },
+      ],
+      resposta: 'A',
+      explicacao: 'O magnésio será reabsorvido no ramo ascendente da alça de Henle.'
+    },
+
+    {
+      pergunta: 'Quais substâncias são secretadas pelo túbulo distal convoluto?',
+      alternativas: [
+        { value: 'A', label: 'Potássio, hidrogênio e amônia' },
+        { value: 'B', label: 'Íons H+, bicarbonato e amônia' },
+        { value: 'C', label: 'Ureia, amônia e bicarbonato' },
+        { value: 'D', label: 'Potássio, magnésio e cálcio ' },
+      ],
+      resposta: 'A',
+      explicacao: 'O túbulo distal convoluto é responsável pela presença de amônia na urina, pela participação na regulação do pH do organismo através da eliminação de hidrogênio e tanto secreta quanto absorve potássio.'
+    },
+
+    {
+      pergunta: 'O túbulo distal convoluto possui um grande número de receptores para a aldosterona, que é responsável por:',
+      alternativas: [
+        { value: 'A', label: 'Reabsorção de sódio e secreção de potássio e hidrogênio' },
+        { value: 'B', label: 'Reabsorção de bicarbonato e secreção de amônia ' },
+        { value: 'C', label: 'Reabsorção de bicarbonato e secreção de sódio' },
+        { value: 'D', label: 'Reabsorção de sódio e bicarbonato e secreção de hidrogênio e potássio' },
+      ],
+      resposta: 'A',
+      explicacao: 'A aldosterona estimula a reabsorção de sódio e a secreção de potássio e hidrogênio, além da reabsorção de água e de cloro. Entretanto, não possui efeito sobre a reabsorção de bicarbonato ou sobre a secreção de amônia.'
+    },
+
+    {
+      pergunta: 'No ducto coletor ocorrem todos os eventos abaixo, exceto:',
+      alternativas: [
+        { value: 'A', label: 'Reabsorção de amônia' },
+        { value: 'B', label: 'Reabsorção de potássio' },
+        { value: 'C', label: 'Secreção de potássio' },
+        { value: 'D', label: 'Secreção de hidrogênio com gasto de ATP' },
+      ],
+      resposta: 'A',
+      explicacao: 'A amônia será secretada no ducto coletor, o hidrogênio será secretado através de transporte ativo e o potássio será tanto reabsorvido quanto secretado.'
+    },
+
+    {
+      pergunta: 'Onde age o hormônio antidiurético? ',
+      alternativas: [
+        { value: 'A', label: 'No ducto coletor' },
+        { value: 'B', label: 'No túbulo distal reto' },
+        { value: 'C', label: 'No túbulo distal convoluto' },
+        { value: 'D', label: 'No ramo descendente fino' },
+      ],
+      resposta: 'A',
+      explicacao: 'O hormônio antidiurético (ADH) age no ducto coletor, modificando o volume e a concentração da urina.'
+    },
+
+    {
+      pergunta: 'O hormônio antidiurético promove:',
+      alternativas: [
+        { value: 'A', label: 'Maior reabsorção de água' },
+        { value: 'B', label: 'Menor reabsorção de água' },
+        { value: 'C', label: 'Hipotonicidade do fluido intratubular' },
+        { value: 'D', label: 'Secreção de água no ducto coletor' },
+      ],
+      resposta: 'A',
+      explicacao: 'Na ausência do ADH (hormônio antidiurético) não ocorre reabsorção de água no ducto coletor. Já na presença do ADH, a reabsorção da água promove o equilíbrio osmótico entre o fluido intratubular e o interstício hipertônico.'
+    },
+
+    {
+      pergunta: 'Um defeito no gene da proteína nefrina, localizada na está relacionado com a síndrome nefrótica congênita, onde ocorre:',
+      alternativas: [
+        { value: 'A', label: 'A presença de proteínas na urina' },
+        { value: 'B', label: 'O aumento da pressão osmótica no glomérulo' },
+        { value: 'C', label: 'O aumento do volume de plasma no aparelho glomerular' },
+        { value: 'D', label: 'Todas as alternativas estão corretas.' },
+      ],
+      resposta: 'A',
+      explicacao: 'Uma falha na produção de nefrina resultará na passagem de proteínas para o filtrado glomerular que, ao final do processo, estarão presentes na urina. A parir disto, haverá uma queda na pressão oncótica do interior do capilar, porém o volume de plasma não irá aumentar.'
+    },
+
+    {
+      pergunta: 'Qual a principal função das sialoproteínas?',
+      alternativas: [
+        { value: 'A', label: 'Repelir substâncias de carga negativa' },
+        { value: 'B', label: 'Barrar a passagem de proteínas para o interior do capilar' },
+        { value: 'C', label: 'Evitar a passagem de íons positivos' },
+        { value: 'D', label: 'Sustentar as fibras da membrana diafragmática' },
+      ],
+      resposta: 'A',
+      explicacao: 'Por possuírem carga negativa, as sialoproteínas irão repelir os íons e moléculas de carga negativa que estiverem passando pelas fenestras do endotélio capilar.'
+    },
   ];
-  // Pergunta 17
+  // Pergunta 35
 
   perguntaAtual: any;
 
