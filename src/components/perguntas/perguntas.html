@@ -8,12 +8,23 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="notReady" text-center style="margin-top: 5px">
-    <strong> Acertos: {{perguntasAcertadas}} </strong> | <strong> Tempo restante: <span *ngIf="showTime">{{tempoPergunta}}s</span> </strong>
+  <div text-center>
+    <div *ngIf="notReady" class="acertosETempo" text-center style="margin-top: 5px">
+      <ion-grid>
+        <ion-row>
+          <ion-col text-left col-6>
+            <strong> Acertos: {{perguntasAcertadas}} </strong>
+          </ion-col>
+          <ion-col text-right col-6>
+            <strong> Tempo restante: <span *ngIf="showTime">{{tempoPergunta}}s</span> </strong>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
   </div>
 
   <ion-card>
-    <ion-card-content style="padding-top: 0px">
+    <ion-card-content style="padding-top: 0px; margin-top: 5px">
       <div *ngIf="!notReady">
         <br>
         <h3>Certifique-se que está pronto, e clique no botão abaixo.</h3>

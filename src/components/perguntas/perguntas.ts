@@ -472,7 +472,7 @@ export class PerguntasComponent {
   id: number;
   gerenciaTempoPergunta() {
     if (this.iniciarContador) {
-      this.tempoPergunta = 18;
+      this.tempoPergunta = 20;
       this.id = setInterval(() => {
         this.contadorTempoPergunta();
       }, 1000);
@@ -519,7 +519,7 @@ export class PerguntasComponent {
     }
   }
 
-  tempoPergunta = 18;
+  tempoPergunta = 20;
   contadorTempoPergunta() {
     if (this.tempoPergunta === 0) {
       this.alertaTempoExpirado();
@@ -621,11 +621,11 @@ export class PerguntasComponent {
   alertaTempoExpirado() {
     const alert = this.alertCtrl.create();
     alert.setTitle('Seu tempo acabou!');
-    alert.setSubTitle('Passaram-se os 18 segundos, você perdeu! :(');
+    alert.setSubTitle('Passaram-se os 20 segundos, você perdeu! :(');
     alert.addButton({
       text: 'Voltar ao início',
       handler: () => {
-        this.tempoPergunta = 18;
+        this.tempoPergunta = 20;
       }
     });
 
@@ -646,7 +646,7 @@ export class PerguntasComponent {
 
     alert.present();
 
-    this.tempoPergunta = 18;
+    this.tempoPergunta = 20;
     // const toast = this.toastCtrl.create({
     //   message: 'Resposta correta!!',
     //   duration: 2000
