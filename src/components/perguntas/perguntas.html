@@ -63,6 +63,15 @@
           </div>
         </form>
       </div>
+
     </ion-card-content>
   </ion-card>
+  <div *ngIf="!notReady" text-center>
+    <ul class="dicas">
+      <li>Descubra a alternativa correta para passar de fase!</li>
+      <li>Você tem 20 segundos para cada pergunta!</li>
+      <li>Se o tempo acabar ou a alternativa estiver incorreta, você perde!</li>
+      <li>Tente acumular o máximo de pontos possível!</li>
+    </ul>
+  </div>
 </ion-content>
