@@ -532,7 +532,8 @@ export class PerguntasComponent {
 
       let novoTentativas = tentativas + 1;
       localStorage.setItem('tentativas', novoTentativas.toString());
-      this.navCtrl.push(HomePage);
+      this.navCtrl.pop()
+      this.navCtrl.push(PerguntasComponent);
       this.ngOnDestroy();
     } else {
       this.tempoPergunta--;
@@ -672,7 +673,7 @@ export class PerguntasComponent {
       text: 'Voltar ao início :(',
       handler: () => {
         this.navCtrl.pop();
-        this.navCtrl.setRoot(HomePage)
+        this.navCtrl.push(PerguntasComponent);
         this.ngOnDestroy();
       }
     });
