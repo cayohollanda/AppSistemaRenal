@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, ToastController, ModalController, NavController, Platform } from 'ionic-angular';
-import { HomePage } from '../../pages/home/home';
 
 /**
  * Generated class for the PerguntasComponent component.
